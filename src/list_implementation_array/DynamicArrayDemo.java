@@ -24,20 +24,33 @@ class DynamicArray{
 	
 	public void display() {
 		System.out.println("Elements in the List:");
-		for(int i=0;i<size-1;i++){
+		for(int i=0;i<size;i++){
 			System.out.print(arr[i]+" ");
 		}
 		
 	}
 	
 	void insertData(int pos, int data) {
-		
-		
+		if(size == capacity){
+			expandArraySize();
+		}
+		for(int i = size-1; i>=pos;i--){
+			arr[i+1] = arr[i];
+		}
+
+		arr[pos] = data;
+		size++;
 
 }
 	
 	void delete(int pos) {
-
+		for(int i=pos+1;i<size;i++){
+			if(i-1<=0){
+				System.out.println("Enter +ve values");
+			}
+				arr[i-1] = arr[i];
+		}
+		size--;
 	}
 	
 	private void expandArraySize() {
@@ -57,16 +70,16 @@ public class DynamicArrayDemo {
 		
 		
 		while(true) {
-			System.out.println("------------Menu--------------");
+			System.out.println("------------Menu--------------\n");
 			System.out.println("1.add Data at end\n");
 			System.out.println("2.Display the list\n");
-			System.out.println("3.Insert Data at specified position");
+			System.out.println("3.Insert Data at specified position\n");
 			System.out.println("4.Delete from the specified position\n");
 			System.out.println("5.Exit\n");
-			System.out.println("--------------------------------");
+			System.out.println("--------------------------------\n");
 			
 			
-			System.out.print("Enter the choice");
+			System.out.print("Enter the choice:");
 			choice = scan.nextInt();
 			
 			switch(choice) {
