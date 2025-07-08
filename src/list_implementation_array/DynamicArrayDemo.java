@@ -45,14 +45,31 @@ class DynamicArray{
 	
 	void delete(int pos) {
 		for(int i=pos+1;i<size;i++){
-			if(i-1<=0){
+			if(pos+1 <= 0){
 				System.out.println("Enter +ve values");
 			}
 				arr[i-1] = arr[i];
 		}
 		size--;
 	}
-	
+
+	public void addFirst(int data){
+		insertData(0,data);
+	}
+
+	public void addLast(int data){
+		add(data);
+	}
+
+	public void deleteFirst(){
+		delete(0);
+	}
+
+	public void deleteLast(){
+		delete(size-1);
+	}
+
+
 	private void expandArraySize() {
 		capacity *= 2;
 		arr = java.util.Arrays.copyOf(arr,capacity);
@@ -75,7 +92,11 @@ public class DynamicArrayDemo {
 			System.out.println("2.Display the list\n");
 			System.out.println("3.Insert Data at specified position\n");
 			System.out.println("4.Delete from the specified position\n");
-			System.out.println("5.Exit\n");
+			System.out.println("5.Add first\n");
+			System.out.println("6.Add Last\n");
+			System.out.println("7.delete first\n");
+			System.out.println("8.delete Last\n");
+			System.out.println("9.Exit\n");
 			System.out.println("--------------------------------\n");
 			
 			
@@ -103,9 +124,27 @@ public class DynamicArrayDemo {
 			System.out.println("Enter the Data");
 			list.delete(pos);
 			break;
+
+			case 5: System.out.println("Enter the element to be added in first of the list");
+			data = scan.nextInt();
+			list.addFirst(data);
+			break;
+
+			case 6: System.out.println("Enter the element to be added in last of the list");
+			data = scan.nextInt();
+			list.addLast(data);
+			break;
+
+			case 7: list.deleteFirst();
+			System.out.println("Element Deleted");
+			break;
+
+			case 8: list.deleteLast();
+			System.out.println("Element Deleted");
+			break;
 			
-			case 5: System.exit(0);
-			
+			case 9: System.exit(0);
+			break;
 			default: System.out.println("Invalid input");
 			
 			
