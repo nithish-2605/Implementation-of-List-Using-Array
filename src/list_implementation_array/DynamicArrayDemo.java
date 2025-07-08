@@ -70,6 +70,16 @@ class DynamicArray{
 	}
 
 
+	public boolean contains(int data){
+		boolean result=false;
+		for (int i = 0; i < size; i++) {
+			if(arr[i] == data){
+				return   true;
+			}
+		}
+		return false;
+	}
+
 	private void expandArraySize() {
 		capacity *= 2;
 		arr = java.util.Arrays.copyOf(arr,capacity);
@@ -96,7 +106,8 @@ public class DynamicArrayDemo {
 			System.out.println("6.Add Last\n");
 			System.out.println("7.delete first\n");
 			System.out.println("8.delete Last\n");
-			System.out.println("9.Exit\n");
+			System.out.println("9.contains\n");
+			System.out.println("10.Exit\n");
 			System.out.println("--------------------------------\n");
 			
 			
@@ -142,8 +153,13 @@ public class DynamicArrayDemo {
 			case 8: list.deleteLast();
 			System.out.println("Element Deleted");
 			break;
+
+			case 9: System.out.println("Enter Element to check wheather it is present or not");
+			data = scan.nextInt();
+			System.out.println(list.contains(data));
+			break;
 			
-			case 9: System.exit(0);
+			case 10: System.exit(0);
 			break;
 			default: System.out.println("Invalid input");
 			
