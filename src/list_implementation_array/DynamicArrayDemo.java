@@ -6,8 +6,8 @@ class DynamicArray{
 	
 	private static final int initialArraySize = 3;
 	private int[] arr;
-	private int size;
-	private int capacity;
+	private int size,capacity;
+
 	
 	DynamicArray(){
 		arr = new int[initialArraySize];
@@ -17,15 +17,15 @@ class DynamicArray{
 	
 	public void add(int data) {
 		if(size == capacity) {
-			doubleArraySize();
+			expandArraySize();
 		}
 		arr[size++] = data;
 	}
 	
 	public void display() {
-		System.out.println("The Elements are:");
-		for(int i:arr) {
-			System.out.print(i+" ");
+		System.out.println("Elements in the List:");
+		for(int i=0;i<size-1;i++){
+			System.out.print(arr[i]+" ");
 		}
 		
 	}
@@ -33,33 +33,16 @@ class DynamicArray{
 	void insertData(int pos, int data) {
 		
 		
-		if(capacity == size) {
-			doubleArraySize();
-		}
-		
-		
-		
-		for(int i=size-1;i>pos+1;i--) {
-			arr[i+1] = arr[i];
-		}
-		
-		arr[pos] = data;
-		size++;
-	
+
 }
 	
 	void delete(int pos) {
-		for(int i=pos; i<size-1; i++) {
-			arr[i] = arr[i+1];
-			arr[i+1] = 0;
-		}
-		
-		size--;
+
 	}
 	
-	private void doubleArraySize() {
-		capacity = capacity * 2;
-		arr = java.util.Arrays.copyOf(arr, capacity);
+	private void expandArraySize() {
+		capacity *= 2;
+		arr = java.util.Arrays.copyOf(arr,capacity);
 	}
 	
 }
