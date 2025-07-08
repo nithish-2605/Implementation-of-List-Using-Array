@@ -71,13 +71,23 @@ class DynamicArray{
 
 
 	public boolean contains(int data){
-		boolean result=false;
 		for (int i = 0; i < size; i++) {
 			if(arr[i] == data){
 				return   true;
 			}
 		}
 		return false;
+	}
+
+	int searchElement(int data){
+		for(int i = 0;i<size;i++){
+			if(arr[i] == data){
+				return i+1;
+			}
+		}
+
+		System.out.println("Element not found");
+		return -1;
 	}
 
 	private void expandArraySize() {
@@ -107,7 +117,8 @@ public class DynamicArrayDemo {
 			System.out.println("7.delete first\n");
 			System.out.println("8.delete Last\n");
 			System.out.println("9.contains\n");
-			System.out.println("10.Exit\n");
+			System.out.println("10.Search Element\n");
+			System.out.println("11.Exit\n");
 			System.out.println("--------------------------------\n");
 			
 			
@@ -158,8 +169,13 @@ public class DynamicArrayDemo {
 			data = scan.nextInt();
 			System.out.println(list.contains(data));
 			break;
+
+			case 10: System.out.println("Enter Element to search the position");
+			data = scan.nextInt();
+			System.out.println(list.searchElement(data));
+			break;
 			
-			case 10: System.exit(0);
+			case 11: System.exit(0);
 			break;
 			default: System.out.println("Invalid input");
 			
