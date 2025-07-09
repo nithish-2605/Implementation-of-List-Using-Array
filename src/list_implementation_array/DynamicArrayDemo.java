@@ -51,6 +51,10 @@ class DynamicArray{
 				arr[i-1] = arr[i];
 		}
 		size--;
+
+		if(capacity > initialArraySize && capacity > 3 * size){
+			shrinkArray();
+		}
 	}
 
 	public void addFirst(int data){
@@ -92,6 +96,11 @@ class DynamicArray{
 
 	private void expandArraySize() {
 		capacity *= 2;
+		arr = java.util.Arrays.copyOf(arr,capacity);
+	}
+
+	private  void shrinkArray(){
+		capacity /= 2;
 		arr = java.util.Arrays.copyOf(arr,capacity);
 	}
 	
