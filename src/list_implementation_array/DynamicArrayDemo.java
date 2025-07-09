@@ -94,6 +94,10 @@ class DynamicArray{
 		return -1;
 	}
 
+	void updateData(int pos, int data){
+		arr[pos] = data;
+	}
+
 	private void expandArraySize() {
 		capacity *= 2;
 		arr = java.util.Arrays.copyOf(arr,capacity);
@@ -127,7 +131,8 @@ public class DynamicArrayDemo {
 			System.out.println("8.delete Last\n");
 			System.out.println("9.contains\n");
 			System.out.println("10.Search Element\n");
-			System.out.println("11.Exit\n");
+			System.out.println("11.Update\n");
+			System.out.println("12.Exit\n");
 			System.out.println("--------------------------------\n");
 			
 			
@@ -183,8 +188,15 @@ public class DynamicArrayDemo {
 			data = scan.nextInt();
 			System.out.println(list.searchElement(data));
 			break;
+
+			case 11:System.out.println("Enter Position");
+			pos = scan.nextInt();
+			System.out.println("Enter the Data");
+			data = scan.nextInt();
+			list.updateData(pos,data);
+			break;
 			
-			case 11: System.exit(0);
+			case 12: System.exit(0);
 			break;
 			default: System.out.println("Invalid input");
 			
