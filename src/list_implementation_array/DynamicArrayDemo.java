@@ -2,20 +2,20 @@ package list_implementation_array;
 import java.util.*;
 
 
-class DynamicArray{
+class DynamicArray<T>{
 	
 	private static final int initialArraySize = 3;
-	private int[] arr;
+	private T[] arr;
 	private int size,capacity;
 
 	
 	DynamicArray(){
-		arr = new int[initialArraySize];
+		arr = (T[]) new Object[initialArraySize];
 		size = 0;
 		capacity = initialArraySize;
 	}
 	
-	public void add(int data) {
+	public void add(T data) {
 		if(size == capacity) {
 			expandArraySize();
 		}
@@ -30,7 +30,7 @@ class DynamicArray{
 		
 	}
 	
-	void insertData(int pos, int data) {
+	public void insertData(int pos, T data) {
 		if(size == capacity){
 			expandArraySize();
 		}
@@ -43,7 +43,7 @@ class DynamicArray{
 
 }
 	
-	void delete(int pos) {
+	public void delete(int pos) {
 		for(int i=pos+1;i<size;i++){
 			if(pos+1 <= 0){
 				System.out.println("Enter +ve values");
@@ -57,11 +57,11 @@ class DynamicArray{
 		}
 	}
 
-	public void addFirst(int data){
+	public void addFirst(T data){
 		insertData(0,data);
 	}
 
-	public void addLast(int data){
+	public void addLast(T data){
 		add(data);
 	}
 
@@ -74,7 +74,7 @@ class DynamicArray{
 	}
 
 
-	public boolean contains(int data){
+	public boolean contains(T data){
 		for (int i = 0; i < size; i++) {
 			if(arr[i] == data){
 				return   true;
@@ -83,7 +83,7 @@ class DynamicArray{
 		return false;
 	}
 
-	int searchElement(int data){
+	public int searchElement(T data){
 		for(int i = 0;i<size;i++){
 			if(arr[i] == data){
 				return i+1;
@@ -94,7 +94,7 @@ class DynamicArray{
 		return -1;
 	}
 
-	void updateData(int pos, int data){
+	public void updateData(int pos, T data){
 		arr[pos] = data;
 	}
 
@@ -114,9 +114,10 @@ class DynamicArray{
 public class DynamicArrayDemo {
 	public static void main(String[] args) {
 		Scanner scan = new Scanner(System.in);
-		int choice,data,pos;
-		
-		DynamicArray list = new DynamicArray();
+		int choice,pos;
+		String data;
+
+		DynamicArray<String> list = new DynamicArray<>();
 		
 		
 		while(true) {
@@ -141,7 +142,7 @@ public class DynamicArrayDemo {
 			
 			switch(choice) {
 			case 1: System.out.println("Enter the Data");
-			data = scan.nextInt();
+			data = scan.next();
 			list.add(data);
 			break;
 			
@@ -151,7 +152,7 @@ public class DynamicArrayDemo {
 			case 3: System.out.println("Enter Position");
 			pos = scan.nextInt();
 			System.out.println("Enter the Data");
-			data = scan.nextInt();
+			data = scan.next();
 			list.insertData(pos,data);
 			break;
 			
@@ -162,12 +163,12 @@ public class DynamicArrayDemo {
 			break;
 
 			case 5: System.out.println("Enter the element to be added in first of the list");
-			data = scan.nextInt();
+			data = scan.next();
 			list.addFirst(data);
 			break;
 
 			case 6: System.out.println("Enter the element to be added in last of the list");
-			data = scan.nextInt();
+			data = scan.next();
 			list.addLast(data);
 			break;
 
@@ -180,27 +181,26 @@ public class DynamicArrayDemo {
 			break;
 
 			case 9: System.out.println("Enter Element to check wheather it is present or not");
-			data = scan.nextInt();
+			data = scan.next();
 			System.out.println(list.contains(data));
 			break;
 
 			case 10: System.out.println("Enter Element to search the position");
-			data = scan.nextInt();
+			data = scan.next();
 			System.out.println(list.searchElement(data));
 			break;
 
 			case 11:System.out.println("Enter Position");
 			pos = scan.nextInt();
 			System.out.println("Enter the Data");
-			data = scan.nextInt();
+			data = scan.next();
 			list.updateData(pos,data);
 			break;
 			
 			case 12: System.exit(0);
 			break;
 			default: System.out.println("Invalid input");
-			
-			
+
 			}
 		}
 		
